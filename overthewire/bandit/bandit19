@@ -1,0 +1,3 @@
+$ ./bandit20-do cat /etc/bandit_pass/bandit20
+
+setuid is for executing binaries as the owner of the binary

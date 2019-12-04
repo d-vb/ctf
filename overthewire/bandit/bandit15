@@ -1,0 +1,4 @@
+$ echo "$password" | openssl s_client -connect localhost:30001 -quiet 2>/dev/null
+
+-quiet: don't print session and certificate information
+2>/dev/null: openssl s_client writes some output to stderr by default

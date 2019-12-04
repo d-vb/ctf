@@ -1,0 +1,4 @@
+$ cat "spaces in this filename"
+$ cat spaces\ in\ this\ filename
+
+either use quotes or you need to escape spaces by using \

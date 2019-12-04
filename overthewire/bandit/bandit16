@@ -1,0 +1,2 @@
+$ nmap localhost -p 31000-32000 --script ssl-cert --open
+$ echo "$password" | openssl s_client -connect localhost:31790 -quiet 2>/dev/null

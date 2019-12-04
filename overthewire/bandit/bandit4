@@ -1,0 +1,2 @@
+$ file inhere/* # to find human readable file types
+$ cat inhere/-file07

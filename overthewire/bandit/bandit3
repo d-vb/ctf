@@ -1,0 +1,4 @@
+$ ls -a inhere/
+$ cat inhere/.hidden
+
+files prefixed with a dot are hidden and can be found with ls -a

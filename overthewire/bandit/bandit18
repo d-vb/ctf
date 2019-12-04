@@ -1,0 +1,1 @@
+$ ssh bandit.labs.overthewire.org -l bandit18 -p 2220 cat readme

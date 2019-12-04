@@ -1,0 +1,3 @@
+$ strings data.txt | grep "^=="
+
+strings shows printable characters in a file
