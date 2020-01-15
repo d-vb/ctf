@@ -1,5 +1,2 @@
-$ chmod u=rw,g=,o= bandit17.key
-$ ssh bandit.labs.overthewire.org -l bandit17 -p 2220 -i bandit17.key
-$ diff passwords.new passwords.old
-
-first 2 commands are needed for using the ssh key we got last level
+$ nmap localhost -p 31000-32000 --script ssl-cert --open
+$ echo "$password" | openssl s_client -connect localhost:31790 -quiet 2>/dev/null

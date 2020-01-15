@@ -1,3 +1,1 @@
-$ echo "$password" | nc localhost 30000
-
-nc/ncat/netcat can be used to send or receive data on arbitrary connections
+$ ssh -i sshkey.private bandit14@localhost cat /etc/bandit_pass/bandit14

@@ -1,4 +1,4 @@
-$ ls -a inhere/
-$ cat inhere/.hidden
+$ cat "spaces in this filename"
+$ cat spaces\ in\ this\ filename
 
-files prefixed with a dot are hidden and can be found with ls -a
+either use quotes or you need to escape spaces by using \

@@ -1,6 +1,2 @@
-$ find -type f -size 1033c ! -perm +x
-$ cat ./inhere/maybehere07/.file2
-
--type f: files
--size 1033c: 1033 bytes
-! -perm +x: not executable
+$ file inhere/* # to find human readable file types
+$ cat inhere/-file07

@@ -1,1 +1,4 @@
-$ grep millionth data.txt
+$ find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+$ cat /var/lib/dpkg/info/bandit7.password
+
+2>/dev/null: redirect errors to /dev/null because we will hit many files that we aren't allowed to read

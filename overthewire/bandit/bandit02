@@ -1,4 +1,3 @@
-$ cat "spaces in this filename"
-$ cat spaces\ in\ this\ filename
+$ cat ./-
 
-either use quotes or you need to escape spaces by using \
+otherwise dash would be interpreted as parameter, ./ is always used for files in current directory

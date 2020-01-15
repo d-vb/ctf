@@ -1,4 +1,6 @@
-$ find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
-$ cat /var/lib/dpkg/info/bandit7.password
+$ find -type f -size 1033c ! -perm +x
+$ cat ./inhere/maybehere07/.file2
 
-2>/dev/null: redirect errors to /dev/null because we will hit many files that we aren't allowed to read
+-type f: files
+-size 1033c: 1033 bytes
+! -perm +x: not executable
