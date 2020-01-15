@@ -1,3 +1,6 @@
-$ ./bandit20-do cat /etc/bandit_pass/bandit20
+$ tmux # split screen with ctrl+b", switch screen with ctrl+b+up/down
+$ nc -l -p 1025 # in one screen
+$ ./suconnect 1025 # in other screen
+# now enter $password in nc-screen
 
-setuid is for executing binaries as the owner of the binary
+nc -l doesn't mean you can only receive messages, you can also send

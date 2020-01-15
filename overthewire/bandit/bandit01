@@ -1,1 +1,3 @@
-$ cat readme
+$ cat ./-
+
+otherwise dash would be interpreted as parameter, ./ is always used for files in current directory

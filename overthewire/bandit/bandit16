@@ -1,4 +1,2 @@
-$ echo "$password" | openssl s_client -connect localhost:30001 -quiet 2>/dev/null
-
--quiet: don't print session and certificate information
-2>/dev/null: openssl s_client writes some output to stderr by default
+$ nmap localhost -p 31000-32000 --script ssl-cert --open
+$ echo "$password" | openssl s_client -connect localhost:31790 -quiet 2>/dev/null

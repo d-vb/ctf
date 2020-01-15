@@ -1,3 +1,3 @@
-$ sort data.txt | uniq -u
+$ strings data.txt | grep "^=="
 
-we need to sort before uniq, because it only matches adjacent lines
+strings shows printable characters in a file

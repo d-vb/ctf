@@ -1,6 +1,4 @@
-$ tmux # split screen with ctrl+b", switch screen with ctrl+b+up/down
-$ nc -l -p 1025 # in one screen
-$ ./suconnect 1025 # in other screen
-# now enter $password in nc-screen
-
-nc -l doesn't mean you can only receive messages, you can also send
+$ ls /etc/cron.d
+$ cat /etc/cron.d/cronjob_bandit22 # show what will be executed by cron
+$ cat /usr/bin/cronjob_bandit22.sh
+$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv

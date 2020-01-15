@@ -1,5 +1,1 @@
-$ chmod u=rw,g=,o= bandit17.key
-$ ssh bandit.labs.overthewire.org -l bandit17 -p 2220 -i bandit17.key
-$ diff passwords.new passwords.old
-
-first 2 commands are needed for using the ssh key we got last level
+$ ssh bandit.labs.overthewire.org -l bandit18 -p 2220 cat readme

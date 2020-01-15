@@ -1,4 +1,5 @@
 $ ls /etc/cron.d
-$ cat /etc/cron.d/cronjob_bandit22 # show what will be executed by cron
-$ cat /usr/bin/cronjob_bandit22.sh
-$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+$ cat /etc/cron.d/cronjob_bandit23
+$ cat /usr/bin/cronjob_bandit23.sh
+$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349

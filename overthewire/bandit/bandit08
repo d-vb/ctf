@@ -1,1 +1,3 @@
-$ grep millionth data.txt
+$ sort data.txt | uniq -u
+
+we need to sort before uniq, because it only matches adjacent lines
