@@ -1,0 +1,6 @@
+somewhere in /tmp
+
+$ git clone ssh://bandit29-git@localhost/home/bandit29-git/repo
+$ cd repo/
+$ git log --all
+$ git show 33ce2e95d9c5d6fb0a40e5ee9a2926903646b4e3

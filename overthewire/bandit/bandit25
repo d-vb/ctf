@@ -1,0 +1,8 @@
+use the ssh key "bandit26.sshkey" in the home directory of bandit25
+
+$ scp -P 2220 bandit25@bandit.labs.overthewire.org:~/bandit26.sshkey .
+$ ssh bandit26@bandit.labs.overthewire.org -p 2220 -i bandit26.sshkey
+
+now you need to minimize your terminal until "more" needs to scroll
+$ v
+:e /etc/bandit_pass/bandit26

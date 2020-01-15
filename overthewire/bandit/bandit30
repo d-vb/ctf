@@ -1,0 +1,6 @@
+somewhere in /tmp
+
+$ git clone ssh://bandit30-git@localhost/home/bandit30-git/repo
+$ cd repo/
+$ git tag
+$ git show secret

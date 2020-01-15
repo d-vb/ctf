@@ -1,0 +1,8 @@
+you need to continue from bandit26 and within vim, you can open the vim file explorer
+
+:Explore
+
+now you see there is an executable file "bandit27-do" in the home directory
+
+:set shell=/bin/bash
+:! /home/bandit26/bandit27-do cat /etc/bandit_pass/bandit27
