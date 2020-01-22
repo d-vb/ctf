@@ -1,0 +1,3 @@
+$ curl -u natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 -s "http://natas3.natas.labs.overthewire.org/robots.txt"
+$ curl -u natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 -s "http://natas3.natas.labs.overthewire.org/s3cr3t/"
+$ curl -u natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 -s "http://natas3.natas.labs.overthewire.org/s3cr3t/users.txt"

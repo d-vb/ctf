@@ -1,0 +1,2 @@
+$ curl -u natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi -s "http://natas2.natas.labs.overthewire.org/files/"
+$ curl -u natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi -s "http://natas2.natas.labs.overthewire.org/files/users.txt" | grep natas3

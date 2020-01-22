@@ -1,0 +1,2 @@
+$ php -r 'echo(base64_decode(strrev(hex2bin("3d3d516343746d4d6d6c315669563362"))));'
+$ curl -u natas8:DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe -s --data "secret=oubWYf2kBq&submit=Submit+Query" "http://natas8.natas.labs.overthewire.org/" | grep password

@@ -1,0 +1,1 @@
+$ curl -u natas0:natas0 -s "http://natas0.natas.labs.overthewire.org/" | grep password
