@@ -1,0 +1,45 @@
+<?php
+
+// this challenge requires known plaintext attacks against xor, that means that
+// if we xor the plaintext with the ciphertext we get the key stream
+
+function xor_encrypt($in, $key) {
+    $text = $in;
+    $outText = "";
+
+    // each character in the input is xored against its corresponding character in the key
+    // this means that if the key material is shorter than the input, it will repeat itself
+    for($i=0;$i<strlen($text);$i++) {
+        $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+$original_ciphertext = "ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw=";
+
+$original_plaintext = array("showpassword"=>"no", "bgcolor"=>"#ffffff");
+echo "original_plaintext:\t";
+print_r($original_plaintext);
+
+// here we xor the plaintext with the ciphertext. so we get the key stream
+// we see here that the key stream is the 4 character sequence "qw8J" repeated.
+echo "key_stream:\t\t" . xor_encrypt(json_encode($original_plaintext), base64_decode($original_ciphertext)) . "\n";
+
+// we now encrypt the plaintext with the key
+$recovered_ciphertext = base64_encode(xor_encrypt(json_encode($original_plaintext), "qw8J"));
+echo "original_ciphertext:\t" . $original_ciphertext . "\n";
+echo "recovered_ciphertext:\t" . $recovered_ciphertext . "\n";
+
+$recovered_plaintext = json_decode(xor_encrypt(base64_decode($recovered_ciphertext), "qw8J"), true);
+echo "recovered_plaintext:\t";
+print_r($recovered_plaintext);
+
+$attack_plaintext = array("showpassword"=>"yes", "bgcolor"=>"#ffffff");
+echo "attack_plaintext:\t";
+print_r($attack_plaintext);
+echo "attack_ciphertext:\t". base64_encode(xor_encrypt(json_encode($attack_plaintext), "qw8J"));
+
+// use attack_ciphertext as value for cookie "data"
+
+?>
